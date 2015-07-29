@@ -81,12 +81,17 @@ types = nltk.FreqDist(tokens)
 
  
 ######### TF IDF  ASSOCIATION  ######### 
-buf = []
-collection = [WhitespaceTokenizer().tokenize(text) for text in collection]
-corpus = TextCollection(collection)
-for i in set(collection[0]):
-    if not i in stopwords.words('english'):
-        buf.append([ i, corpus.tf_idf(i, collection[6])])
-for i in sorted(buf,key=lambda l:l[1], reverse=True)[:20]:
-    print i
+# buf = []
+# collection = [WhitespaceTokenizer().tokenize(text) for text in collection]
+# corpus = TextCollection(collection)
+# for i in set(collection[0]):
+#     if not i in stopwords.words('english'):
+#         buf.append([ i, corpus.tf_idf(i, collection[6])])
+# for i in sorted(buf,key=lambda l:l[1], reverse=True)[:20]:
+#     print i
 
+from nltk.corpus import  wordnet as wn
+for i,j in enumerate (wn.synsets('error')):
+    print "MEning ",i,"nltk id: ", j.name()
+    print "Definition:",j.definition()
+    print "Sysnonims:", ",".join(j.lemma_names()) 
